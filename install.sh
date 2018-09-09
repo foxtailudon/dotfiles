@@ -1,4 +1,4 @@
-DOT_FILES=(.tmux.conf .vim .viminfo .vimrc .zprofile .zsh_history .zshenv .zshrc)
+T_FILES=(.tmux.conf .vim .viminfo .vimrc .zprofile .zsh_history .zshenv .zshrc)
 
 usage_exit(){
     echo "Usage $0 [-m MacOS] [-u Ubuntu]" 1>&2
@@ -16,10 +16,11 @@ vim_install(){
     curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh -o /tmp/dein_installer.sh
     sh /tmp/dein_installer.sh ~/dotfiles/.vim/bundle
     rm /tmp/dein_installer.sh
+    git clone --rcursive https://github.com/davidhalter/jedi-vim.git ~/dotfiles/.vim/bundle/jedi-vim
 }
 
 
-while getopts mlh OPT
+while getopts mulh OPT
 do
     case $OPT in
         m) 
